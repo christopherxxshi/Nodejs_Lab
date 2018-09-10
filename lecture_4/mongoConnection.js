@@ -7,19 +7,14 @@ const settings = {
 	}
 };
 
-let = fullMongoUrl = `${settings.mongoConfig.serverUrl}`;
 let _connection = undefined;
 let _db = undefined;
 
-async function connection() {
+module.exports = async () => {
 	if (!_connection) {
-		_connection = await (MongoClient.connect(fullMongoUrl));
-		_db = await (_connection.db(settings.mongoConfig.database));
+		_connection = await MongoClient.connect(settings.mongoConfig.serverUrl);
+		_db = await _connection.db(settings.mongoConfig.database);
 	}
 
 	return _db;
-}
-
-module.exports = {
-	connection
 };

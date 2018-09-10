@@ -1,4 +1,5 @@
 const todo = require('./todo');
+const connection = require("./mongoConnection");
 
 async function main(){
     try {
@@ -33,8 +34,14 @@ async function main(){
             let completedTask = await todo.completeTask(remainingTasks[i]._id);
             console.log(completedTask);
         }
+        const db = await connection();
+        await db.serverConfig.close();
+        console.log("Done!");
     }catch(err){
         console.log(err);
-    }
+    };
 }
-main();
+main()
+.catch(err=>{
+    console.log(err);
+});
