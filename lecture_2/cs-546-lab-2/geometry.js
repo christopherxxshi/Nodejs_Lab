@@ -9,7 +9,7 @@ function checkIsProperNumber(val, variableName){
     };
 
     if (val <= 0){
-        throw `${variableName || "provided variable"} is no more than 0`;
+        throw `${variableName || "provided variable"} is less or equal to 0`;
     }
 }
 
@@ -32,12 +32,12 @@ module.exports = {
     volumeOfSphere: (radius) => {
         checkIsProperNumber(radius,"radius");
 
-        return 4 * Math.PI * radius * radius * radius / 3;
+        return 4 * Math.PI * Math.pow(radius, 3) / 3;
     },
     surfaceAreaOfSphere: (radius) => {
         checkIsProperNumber(radius,"radius");
 
-        return 4 * Math.PI * radius * radius;
+        return 4 * Math.PI * Math.pow(radius, 2);
     }
 }
 

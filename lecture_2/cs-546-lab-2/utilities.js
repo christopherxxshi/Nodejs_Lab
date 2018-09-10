@@ -1,5 +1,5 @@
 module.exports = {
-    deepEquality: (obj1, obj2) => {
+    deepEquality: function deepEquality(obj1, obj2){
         if (obj1 === undefined || typeof obj1 !== "object") {
             throw `obj1 is not a object`;
         };
@@ -9,13 +9,31 @@ module.exports = {
 
         let keyObj1 = Object.keys(obj1);
         let keyObj2 = Object.keys(obj2);
-        if(keyObj1.sort().toString() != keyObj2.sort().toString()){
+        if(keyObj1.length != keyObj2.length){
             return false;
         };
+        // check keys
+        for(let i = 0; i < keyObj1.length; i++){
+            findFlag = false;
+            for(let j = 0; j < keyObj2.length; j++){
+                if(keyObj1[i] === keyObj2[j]){
+                    findFlag = true;
+                    break;
+                }
+            }
+            if(!findFlag) return false;
+        }
         
         for(let i = 0; i < keyObj1.length; i++){
             let curKey = keyObj1[i];
-            if(obj1[curKey] != obj2[curKey]) return false;
+            let curVal1 = obj1[curKey];
+            let curVal2 = obj2[curKey];
+            if(typeof curVal1 !== typeof curVal2) return false;
+            if(typeof curVal1 === "object"){
+                if(!deepEquality(curVal1, curVal2)) return false;
+            }else{
+                if(curVal1 !== curVal2) return false;
+            }
         };
         
         return true;
@@ -39,7 +57,7 @@ module.exports = {
         let charMap = {};
         for(let i = 0; i < str.length; i++){
             let cur = str.charAt(i);
-            if(!charMap.hasOwnProperty(cur)) charMap[cur] = 0;
+            if(!(cur in charMap)) charMap[cur] = 0;
             charMap[cur]++;
         }
         return charMap;
