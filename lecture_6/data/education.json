@@ -1,0 +1,14 @@
+[
+    {
+      "schoolName": "Stevens institute of Technology",
+      "degree": "Master of Science",
+      "favoriteClass": "web programming, Advanced Algorithms",
+      "favoriteMemory": "The first time saw Manhattan view at school's view point."
+    },
+    {
+        "schoolName": "Harbin institute of Technology",
+        "degree": "Bachelor of Science",
+        "favoriteClass": "Advanced Programming Language, Operating System",
+        "favoriteMemory": "Play video game with my roommates and friends."
+      }
+]
