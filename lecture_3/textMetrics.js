@@ -1,4 +1,7 @@
 createMetrics = (text)=> {
+    if(typeof text != 'string'){
+        throw "You must provide a string!";
+    }
     var result = {
         totalLetters: 0,
         totalNonLetters: 0,
@@ -13,7 +16,8 @@ createMetrics = (text)=> {
     if(text == ""){
         return result;
     }
-    let curWord = "";
+    var curWord = "";
+    var wordList = [];
     for(let i = 0; i < text.length; i++){
         let curLetter = text[i];
         let curAscCode = curLetter.charCodeAt();
@@ -29,13 +33,18 @@ createMetrics = (text)=> {
         }else{
             result.totalNonLetters += 1;
             if (curWord != ""){
-                curWord = curWord.toLowerCase()
-                if(!result.wordOccurrences.hasOwnProperty(curWord)) result.wordOccurrences[curWord] = 0;
-                result.wordOccurrences[curWord]++;
+                wordList.push(curWord.toLowerCase());
                 curWord = "";
             }
         }
     };
+    if (curWord != "") wordList.push(curWord);
+
+    wordList.forEach((item)=>{
+        if(!result.wordOccurrences.hasOwnProperty(item)) result.wordOccurrences[item] = 0;
+        result.wordOccurrences[item]++;
+    })
+
     let totalLength = 0;
     for(let key in result.wordOccurrences) {
         result.uniqueWords += 1;
