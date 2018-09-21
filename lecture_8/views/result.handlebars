@@ -1,0 +1,15 @@
+<article>
+  <header class="border-bottom">
+    <h1>{{title}}</h1>
+  </header>
+
+  <p class={{class}}>{{text}}</p>
+
+  {{#if palindrome}}
+    <p>{{text}} is a palindrome</p>
+  {{else}}
+    <p>{{text}} is not a palindrome</p>
+  {{/if}}
+
+  <a href="/">Try another palindrome</a>
+</article>
