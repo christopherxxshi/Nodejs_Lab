@@ -10,5 +10,11 @@
         "degree": "Bachelor of Science",
         "favoriteClass": "Advanced Programming Language, Operating System",
         "favoriteMemory": "Play video game with my roommates and friends."
-      }
+    },
+    {
+        "schoolName": "Jilin No.1 senior high school",
+        "degree": "High school",
+        "favoriteClass": "Biolody",
+        "favoriteMemory": "Graduation travel"
+    }
 ]
