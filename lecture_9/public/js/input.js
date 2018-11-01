@@ -8,7 +8,8 @@ function formSubmit() {
 		li.setAttribute("class", isPalindrome ? "is-palindrome" : "not-palindrome");
         
         var attempts = document.getElementById("attempts");
-        attempts.insertBefore(li, attempts.childNodes[0]);
+
+        attempts.appendChild(li);
 	}
     else{
         alert("You must enter text.");
