@@ -5,10 +5,7 @@ router.get("/", (req, res) => {
 	var data = {
 		title: "Logout"
 	}
-
-	res.cookie("AuthCookie", "", {expires: new Date()});
 	res.clearCookie("AuthCookie");
-
 	res.render("logout", data);
 });
 

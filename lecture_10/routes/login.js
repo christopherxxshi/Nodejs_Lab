@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
 	let error_message = "Incorrect username or password."
 	let authenticated = false;
 	try {
-		authenticated = await userData.checkCredentials(username, password);
+		authenticated = await userData.checkPassword(username, password);
 	} catch (e) {
 		error_message = "Empty username or password."
 	}

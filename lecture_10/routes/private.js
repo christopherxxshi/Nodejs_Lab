@@ -6,13 +6,12 @@ router.get("/", async (req, res) => {
 	const AuthCookie = req.cookies.AuthCookie;
 	var user = await userData.getUserBySessionID(AuthCookie);
 	var authenticated = user !== undefined;
-
+	
 	if (authenticated) {
 		data = {
 			title: "User Info",
 			user: user
 		}
-
 		res.render("private", data);
 	} else {
 		var data = {
